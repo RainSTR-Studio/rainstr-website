@@ -1,0 +1,5 @@
+# Ignore the node modules
+/node_modules
+
+# And the built files
+/dist
