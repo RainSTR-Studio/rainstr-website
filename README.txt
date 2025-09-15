@@ -1,1 +1,0 @@
-copy index.html to folder members/ about/ projects/ (if not exist create it manually!)
