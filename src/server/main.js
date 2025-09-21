@@ -2,7 +2,7 @@ import express from "express";
 import ViteExpress from "vite-express";
 import { readFileSync, writeFile } from 'fs';
 import md5 from 'md5-node';
-const data = JSON.parse(readFileSync('./admin.json', 'utf8'));
+//const data = JSON.parse(readFileSync('./admin.json', 'utf8'));
 const app = express();
 const feedbacks = JSON.parse(readFileSync('./feedbacks.json', 'utf8'));
 
@@ -30,11 +30,11 @@ app.post("/feedback", (req, res) => {
 app.get("/getFeedbacks", (req, res) => {
     const { name, pwd } = req.query;
     const pwdMD5 = md5(pwd).toUpperCase();
-    for (const item of data) {
-      if (name == item.username && pwdMD5 == item.password) {
+    //for (const item of data) {
+      if (name == "admin" && pwdMD5 == "25D55AD283AA400AF464C76D713C07AD") {
         res.json(feedbacks);
         return;
-      }
+      //}
     }
     res.sendStatus(401);
 })
