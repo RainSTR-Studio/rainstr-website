@@ -77,6 +77,7 @@ const feedbackSuccess = () => {
 }
 
 const feedbackIt = (msg: string) => {
+    console.log(msg);
     fetch('/feedback', {
         method: 'POST', // 指定请求方法
         headers: {

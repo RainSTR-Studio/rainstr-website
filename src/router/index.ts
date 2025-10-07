@@ -4,6 +4,7 @@ import AboutView from '@/views/About.vue';
 import Project from '@/views/Project.vue';
 import Member from '@/views/Member.vue';
 import Contact from '@/views/Contact.vue';
+import NotFound from '@/views/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: AboutView,
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound
     },
   ],
 })
