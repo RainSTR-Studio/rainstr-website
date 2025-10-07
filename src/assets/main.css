@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -25,7 +26,7 @@ a:hover {
 body {
   margin: 0;
   padding: 0;
-/*
+  /*
   place-items: center;
 
   min-width: 320px;
@@ -53,9 +54,11 @@ h1 {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -71,6 +74,7 @@ h1 {
 .container {
   padding: 40px;
 }
+
 /* 标题部分 */
 .header-section {
   text-align: center;
