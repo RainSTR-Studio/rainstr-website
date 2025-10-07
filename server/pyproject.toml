@@ -1,0 +1,14 @@
+[project]
+name = "rainstr-website-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "aiofiles>=24.1.0",
+    "fastapi>=0.118.0",
+    "orjson>=3.11.3",
+    "pydantic[email]>=2.11.10",
+    "uvicorn>=0.37.0",
+    "uvloop>=0.21.0",
+]

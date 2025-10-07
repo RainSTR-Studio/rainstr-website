@@ -5,6 +5,8 @@ import Title from '../components/Title.vue'
 import { reactive } from 'vue'
 import { ElNotification, ElForm, ElButton, ElInput, ElSelect, ElFormItem, ElOption } from 'element-plus'
 
+const server_url = "http://localhost:8080"
+
 const form = reactive({
     type: 'bug',
     email: '',
@@ -78,7 +80,7 @@ const feedbackSuccess = () => {
 
 const feedbackIt = (msg: string) => {
     console.log(msg);
-    fetch('/feedback', {
+    fetch(`${server_url}/feedback`, {
         method: 'POST', // 指定请求方法
         headers: {
             'Content-Type': 'application/json'
