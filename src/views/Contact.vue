@@ -70,10 +70,15 @@ const feedbackError1 = (whyerr: string) => {
     })
 }
 
-const feedbackSuccess = () => {
+const feedbackSuccess = (json: any) => {
+    let message = json.detail;
+    // 如果是列表，说明数据校验不通过
+    if (json.detail instanceof Array) {
+        message = json.detail[0].msg;
+    }
     ElNotification({
         title: '成功',
-        message: '反馈已提交，感谢您的参与！',
+        message: json.detail,
         type: 'success',
     })
 }
@@ -87,7 +92,7 @@ const feedbackIt = (msg: string) => {
         },
         body: msg
     })
-        .then(_ => feedbackSuccess())
+        .then(response => feedbackSuccess(response.json()))
         .catch(error => feedbackError(error.message));
 }
 </script>

@@ -9,6 +9,7 @@ import orjson
 import aiofiles
 import os
 from datetime import datetime
+import asyncio
 
 # 定义反馈数据模型
 class FeedbackItem(BaseModel):
@@ -23,6 +24,7 @@ class FeedbackResponse(BaseModel):
 @asynccontextmanager
 async def life_cycle(app: FastAPI):
     await ensure_feedback_file()
+    app.state.feedback_lock = asyncio.Lock()
     yield
 
 
@@ -65,23 +67,26 @@ def get_safe_path(requested_path: str) -> Path:
 async def ensure_feedback_file():
     """确保反馈文件存在"""
     if not os.path.exists(FEEDBACK_FILE):
-        async with aiofiles.open(FEEDBACK_FILE, 'wb') as f:
-            await f.write(orjson.dumps([], option=orjson.OPT_INDENT_2))
+        async with app.state.feedback_lock:
+            async with aiofiles.open(FEEDBACK_FILE, 'wb') as f:
+                await f.write(orjson.dumps([], option=orjson.OPT_INDENT_2))
 
 async def read_feedback_from_file() -> List[dict]:
     """从文件读取反馈数据"""
     await ensure_feedback_file()
     try:
-        async with aiofiles.open(FEEDBACK_FILE, 'r', encoding='utf-8') as f:
-            content = await f.read()
-            return orjson.loads(content) if content.strip() else []
+        async with app.state.feedback_lock:
+            async with aiofiles.open(FEEDBACK_FILE, 'r', encoding='utf-8') as f:
+                content = await f.read()
+                return orjson.loads(content) if content.strip() else []
     except (orjson.JSONDecodeError, FileNotFoundError):
         return []
 
 async def write_feedback_to_file(feedback_list: List[dict]):
     """将反馈数据写入文件"""
-    async with aiofiles.open(FEEDBACK_FILE, 'wb') as f:
-        await f.write(orjson.dumps(feedback_list, option=orjson.OPT_INDENT_2))
+    async with app.state.feedback_lock:
+        async with aiofiles.open(FEEDBACK_FILE, 'wb') as f:
+            await f.write(orjson.dumps(feedback_list, option=orjson.OPT_INDENT_2))
 
 @app.post("/feedback", response_model=FeedbackResponse)
 async def submit_feedback(feedback: FeedbackItem):
@@ -132,10 +137,10 @@ async def get_feedback_by_type(feedback_type: Literal['bug', 'crash', 'logic', '
 @app.get("/{file_path:path}")
 async def root(file_path: str):
     full_path = get_safe_path(file_path)
-    if os.path.exists(file_path):
+    if os.path.exists(full_path) and os.path.isfile(full_path):
         return FileResponse(full_path)
     else:
-        return FileResponse(get_safe_path("index.html"))
+        return FileResponse(get_safe_path("index.html"), media_type="text/html")
 
 
 if __name__ == "__main__":
