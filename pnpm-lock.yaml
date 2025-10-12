@@ -42,11 +42,14 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
+      run-p:
+        specifier: ^0.0.0
+        version: 0.0.0
       typescript:
         specifier: ~5.9.0
         version: 5.9.3
       vite:
-        specifier: ^7.1.7
+        specifier: ^7.1.9
         version: 7.1.9(@types/node@22.18.8)
       vite-plugin-vue-devtools:
         specifier: ^8.0.2
@@ -1000,6 +1003,9 @@ packages:
   run-applescript@7.1.0:
     resolution: {integrity: sha512-DPe5pVFaAsinSaV6QjQ6gdiedWDcRCbUuiQfQa2wmWV7+xC9bGulGI8+TdRmoFkAPaBXk8CrAbnlY2ISniJ47Q==}
     engines: {node: '>=18'}
+
+  run-p@0.0.0:
+    resolution: {integrity: sha512-ZLiUUVOXJcM/S1hMnm6Ooc1zAgAx98Mmn1qyA+y3WNeK7hOTGAusVR5r3uOQJ0NuUxZt7J9vNusYNNVgKPSbww==}
 
   semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -2111,6 +2117,8 @@ snapshots:
       fsevents: 2.3.3
 
   run-applescript@7.1.0: {}
+
+  run-p@0.0.0: {}
 
   semver@6.3.1: {}
 
