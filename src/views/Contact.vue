@@ -5,7 +5,11 @@ import Title from '../components/Title.vue'
 import { reactive } from 'vue'
 import { ElNotification, ElForm, ElButton, ElInput, ElSelect, ElFormItem, ElOption } from 'element-plus'
 
-const server_url = "http://localhost:8080"
+var server_url = ""
+if (import.meta.env.DEV) {
+    server_url = "http://localhost:8000"
+}
+
 
 const form = reactive({
     type: 'bug',
