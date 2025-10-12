@@ -7,7 +7,7 @@ import { ElNotification, ElForm, ElButton, ElInput, ElSelect, ElFormItem, ElOpti
 
 var server_url = ""
 if (import.meta.env.DEV) {
-    server_url = "http://localhost:8000"
+    server_url = "http://localhost:8080"
 }
 
 
