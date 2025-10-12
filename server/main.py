@@ -23,8 +23,8 @@ class FeedbackResponse(BaseModel):
 
 @asynccontextmanager
 async def life_cycle(app: FastAPI):
-    await ensure_feedback_file()
     app.state.feedback_lock = asyncio.Lock()
+    await ensure_feedback_file()
     yield
 
 
