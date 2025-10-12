@@ -88,7 +88,10 @@ window.addEventListener('beforeunload', () => {
 
             <!-- 移动端和桌面端的不同展示 -->
             <template v-if="isMobile">
-                <el-sub-menu index="5" title="菜单">
+                <el-sub-menu index="5">
+	            <template #title>
+		        <p>菜单</p>
+		    </template>
                     <RouterLink v-for="item in MENU_ITEMS" :key="item.index" :to="item.url">
                         <el-menu-item :index="item.index">{{ item.name }}</el-menu-item>
                     </RouterLink>
