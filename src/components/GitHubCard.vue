@@ -35,7 +35,7 @@ const openHomepage = (user: string) => {
             </div>
             <p class="universal-description">{{ description }}</p>
             <el-button @click="openHomepage(from)" class="github-btn" type="primary" round>
-                查看个人主页
+                查看主页
             </el-button>
             <div>
                 <!-- 预留空间 (去掉会发生奇怪的事情) -->
