@@ -18,7 +18,7 @@ const openGithub = (user: string, repo: string) => {
 }
 
 const openHomepage = (user: string) => {
-    window.open(`https://www.rainstr-studio.top/members/${user}`, '_blank')
+    window.open(`/members/${user}`, '_blank')
 }
 </script>
 
