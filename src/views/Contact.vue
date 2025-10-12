@@ -75,12 +75,19 @@ const feedbackSuccess = (json: any) => {
     // 如果是列表，说明数据校验不通过
     if (json.detail instanceof Array) {
         message = json.detail[0].msg;
+        ElNotification({
+            title: '错误',
+            message: message,
+            type: 'error',
+        })
+    } else {
+        ElNotification({
+            title: '成功',
+            message: json.detail,
+            type: 'success',
+        })
     }
-    ElNotification({
-        title: '成功',
-        message: json.detail,
-        type: 'success',
-    })
+
 }
 
 const feedbackIt = (msg: string) => {
