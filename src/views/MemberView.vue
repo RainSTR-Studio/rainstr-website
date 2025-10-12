@@ -36,18 +36,27 @@ const member = [
     }
 ];
 
-const openGithub = (user: string, repo: string) => {
+const openGithub = (user: any, repo: string) => {
     window.open(`https://github.com/${user}/${repo}`, '_blank')
 }
 
 const fullUrl = window.location.href;
 const name = ref(window.location.pathname.split('/')[2]);
+const memberInfo = ref(member.find(m => m.name === name.value));
 </script>
 
 <template>
     <MenuBar nav="2" />
     <div class="container">
-        <Title>{{ name }}</Title>
+        <!-- 头像和基本信息 -->
+        <div class="universal-header">
+            <el-avatar :size="60" :src="memberInfo?.avatar" class="universal-avatar" />
+            <div class="universal-info">
+                <h3 class="universal-nickname">{{ memberInfo?.nickname }}</h3>
+                <p class="universal-name">{{ memberInfo?.name }}</p>
+            </div>
+        </div>
+        <p class="universal-description">{{memberInfo?.description }}</p>
     </div>
 </template>
 
