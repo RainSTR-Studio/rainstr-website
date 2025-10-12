@@ -17,6 +17,7 @@
   "dependencies": {
     "@vueuse/core": "^13.9.0",
     "element-plus": "^2.11.4",
+    "run-p": "^0.0.0",
     "unplugin-element-plus": "^0.10.0",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"
