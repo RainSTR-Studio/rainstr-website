@@ -10,6 +10,7 @@ const member = [
         "name": "zhangxuan2011",
         "nickname": "zhangxuan",
         "description": "zhangxuan2011",
+	"webdir": "zhangxuan2011",
         "url": "https://space.bilibili.com/1076425555",
         "avatar": "https://avatars.githubusercontent.com/u/114813512?v=4"
     },
@@ -17,6 +18,7 @@ const member = [
         "name": "moyanj",
         "nickname": "MoYan",
         "description": "前进，不择手段的前进。",
+	"webdir": "moyanj",
         "url": "https://blog.moyanjdc.top",
         "avatar": "https://avatars.githubusercontent.com/u/88998238?v=4"
     },
@@ -25,6 +27,7 @@ const member = [
         "nickname": "TMXQWQ",
         "description": "TMXQWQ",
         "url": "about:blank",
+	"webdir": "TMXQWQ",
         "avatar": "https://avatars.githubusercontent.com/u/122204742?v=4"
     },
     {
@@ -32,6 +35,7 @@ const member = [
         "nickname": "xiaokuai",
         "description": "xiaokuai",
         "url": "about:blank",
+	"webdir": "RainyHowCool",
         "avatar": "https://avatars.githubusercontent.com/u/116129827?v=4"
     }
 ];
@@ -49,9 +53,19 @@ const openGithub = (user: string, repo: string) => {
 
         <!-- 成员卡片网格 -->
         <div class="universal-grid">
-            <GitHubCard v-for="item in member" :key="item.name" :avatar="item.avatar" :title="item.name"
-                :subtitle="item.nickname" :description="item.description" :from="item.name" repo=""
-                avatarShape="circle" />
+            <GitHubCard
+              v-for="item in member"
+	      :key="item.name"
+	      :avatar="item.avatar"
+	      :title="item.name"
+	      :subtitle="item.nickname"
+	      :description="item.description"
+	      :from="item.name"
+	      :repo="''"
+	      :webdir="item.webdir"
+	      avatarShape="circle"
+        />
+
         </div>
 
         <!-- 底部按钮 -->

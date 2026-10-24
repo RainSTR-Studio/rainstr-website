@@ -8,16 +8,19 @@ const projects = [
     {
         "name": "mcospkg",
         "from": "RainSTR-Studio",
+	"webdir": "mcospkg",
         "description": "A package manager for Minecraft OS"
     },
     {
         "name": "proka-kernel",
         "from": "RainSTR-Studio",
+	"webdir": "proka-kernel",
         "description": "A kernel for ProkaOS"
     },
     {
         "name": "proka-bootloader",
         "from": "RainSTR-Studio",
+	"webdir": "proka-bootloader",
         "description": "A boot loader for Proka Kernel"
     }
 ]
@@ -35,10 +38,19 @@ const openGithub = (user: string, repo: string) => {
 
         <!-- 项目卡片网格 -->
         <div class="universal-grid">
-            <GitHubCard v-for="(item, index) in projects" :key="index"
-                avatar="https://avatars.githubusercontent.com/u/205417930?s=48&v=4" :title="item.from"
-                :subtitle="item.name" :description="item.description" :from="item.from" :repo="item.name"
-                avatarShape="square" />
+            <GitHubCard
+              v-for="item in projects"
+              :key="`${item.from}/${item.name}`"
+	      avatar="https://avatars.githubusercontent.com/u/205417930?s=48&v=4"
+	      :title="item.from"
+	      :subtitle="item.name"
+	      :description="item.description"
+	      :from="item.from"
+	      :repo="item.name"
+	      :webdir="item.webdir"
+	      avatarShape="square"
+	    />
+
 
         </div>
 

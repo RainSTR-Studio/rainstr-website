@@ -9,16 +9,20 @@ interface CardProps {
     description: string
     from: string
     repo: string
+    webdir?: string
     avatarShape?: 'circle' | 'square'
 }
-const props = defineProps<CardProps>();
+const props = withDefaults(defineProps<CardProps>(), {
+    avatarShape: 'circle'
+})
 
 const openGithub = (user: string, repo: string) => {
-    window.open(`https://github.com/${user}/${repo}`, '_blank')
+    window.open(`https://github.com/${user}/${repo}`, '_blank', 'noopener,noreferrer')
 }
 
-const openHomepage = (user: string) => {
-    window.open(`./${encodeURIComponent(user)}`, '_blank')
+const openWebDir = () => {
+    if (!props.webdir) return
+    window.open(props.webdir, '_blank', 'noopener,noreferrer')
 }
 </script>
 
@@ -34,7 +38,7 @@ const openHomepage = (user: string) => {
                 </div>
             </div>
             <p class="universal-description">{{ description }}</p>
-            <el-button @click="openHomepage(from)" class="github-btn" type="primary" round>
+            <el-button @click="openWebDir" class="github-btn" type="primary" round :disabled="!webdir">
                 查看主页
             </el-button>
             <div>
