@@ -17,18 +17,23 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  // 多页面（MPA）：每个页面一个独立入口，构建产物为多个 .html 文件
+  // 多页面（MPA）：
+  //  Vite 会把 HTML 输出到 dist/ 下、与源 HTML 相对项目根的路径一致的位置。
+  //  因此 HTML 物理放在哪，dist 就落在哪：
+  //    *.html（根）            → dist/*.html
+  //    projects/index.html     → dist/projects/index.html
+  //    members/index.html      → dist/members/index.html
   build: {
     rollupOptions: {
       input: {
         index: fileURLToPath(new URL('./index.html', import.meta.url)),
-        projects: fileURLToPath(new URL('./projects.html', import.meta.url)),
-        members: fileURLToPath(new URL('./members.html', import.meta.url)),
         member: fileURLToPath(new URL('./member.html', import.meta.url)),
         about: fileURLToPath(new URL('./about.html', import.meta.url)),
         contact: fileURLToPath(new URL('./contact.html', import.meta.url)),
-        notfound: fileURLToPath(new URL('./404.html', import.meta.url)),
+        404: fileURLToPath(new URL('./404.html', import.meta.url)),
+        'projects/index': fileURLToPath(new URL('./projects/index.html', import.meta.url)),
+        'members/index': fileURLToPath(new URL('./members/index.html', import.meta.url)),
       }
     }
-  },
+  }
 })

@@ -2,17 +2,17 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { ElMenu, ElMenuItem, ElAffix, ElSubMenu } from 'element-plus'
 
-// 菜单配置：MPA 下直接指向构建产物中的 .html 文件
+// 菜单配置
 const MENU_ITEMS = [
     {
         name: '项目',
         index: '1',
-        url: 'projects.html'
+        url: 'projects/'
     },
     {
         name: '成员',
         index: '2',
-        url: 'members.html'
+        url: 'members/'
     },
     {
         name: '关于我们',
