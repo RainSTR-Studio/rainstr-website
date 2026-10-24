@@ -4,6 +4,7 @@ import MenuBar from '../components/MenuBar.vue';
 import '../assets/universal-card.css';
 import GitHubCard from '../components/GitHubCard.vue';
 
+// TODO: Move to json
 const member = [
     {
         "name": "zhangxuan2011",

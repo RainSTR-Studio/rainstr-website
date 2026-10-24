@@ -18,7 +18,7 @@ const openGithub = (user: string, repo: string) => {
 }
 
 const openHomepage = (user: string) => {
-    window.open(`member.html?name=${encodeURIComponent(user)}`, '_blank')
+    window.open(`./${encodeURIComponent(user)}`, '_blank')
 }
 </script>
 

@@ -7,22 +7,22 @@ const MENU_ITEMS = [
     {
         name: '项目',
         index: '1',
-        url: 'projects/'
+        url: '/projects'
     },
     {
         name: '成员',
         index: '2',
-        url: 'members/'
+        url: '/members'
     },
     {
         name: '关于我们',
         index: '3',
-        url: 'about.html'
+        url: '/about.html'
     },
     {
         name: '联系我们',
         index: '4',
-        url: 'contact.html'
+        url: '/contact.html'
     }
 ]
 
@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
             @select="handleSelect">
             <!-- 通用 Logo 链接 -->
             <el-menu-item index="0" class="logo-item">
-                <a href="index.html">
+                <a href="/index.html">
                     <h3>RainSTR Studio</h3>
                 </a>
             </el-menu-item>
