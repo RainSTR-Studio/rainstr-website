@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import MenuBar from '../components/MenuBar.vue'
 import Title from '../components/Title.vue'
-import { RouterLink } from 'vue-router';
 import { ElButton, ElTabs, ElTabPane } from 'element-plus'
 const openGithub = () => {
     window.open('https://github.com/RainSTR-Studio', '_blank')
@@ -21,7 +20,7 @@ const openGithub = () => {
             <el-tab-pane label="成员" name="second">
                 <p>RainSTR Studio 的成员大多是初中生，他们的共同点是对计算机有很强的兴趣。</p>
                 <p>你可以点击下方的链接来访问成员列表:D</p>
-                <RouterLink to="/members"><el-button type="primary" text>成员列表</el-button></RouterLink>
+                <a href="members.html"><el-button type="primary" text>成员列表</el-button></a>
             </el-tab-pane>
             <el-tab-pane label="联系我们" name="third">
                 <p>如果您想吐槽bug，分享想法，亦或是想加入我们，请联系我们。</p>

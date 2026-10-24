@@ -41,7 +41,8 @@ const openGithub = (user: any, repo: string) => {
 }
 
 const fullUrl = window.location.href;
-const name = ref(window.location.pathname.split('/')[2]);
+// MPA：成员名从 URL 的 ?name= 查询参数读取
+const name = ref(new URLSearchParams(window.location.search).get('name') || '');
 const memberInfo = ref(member.find(m => m.name === name.value));
 </script>
 
